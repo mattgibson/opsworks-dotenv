@@ -1,6 +1,6 @@
 source "https://api.berkshelf.com"
 
 
-cookbook: "opsworks", github: "aws/opsworks-cookbooks"
+cookbook: "deploy", github: "aws/opsworks-cookbooks", rel: 'deploy'
 
 metadata
