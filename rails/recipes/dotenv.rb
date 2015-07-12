@@ -19,8 +19,9 @@ node[:deploy].each do |application, deploy|
 
   open("#{deploy[:deploy_to]}/shared/.env", 'w') do |f|
     require 'yaml'
-    deploy[:rails_env].to_h.each do |name, value|
-      f.puts "#{name}=#{value.to_s.shellescape}"
+
+    OpsWorks::Escape.escape_double_quotes(deploy[:environment_variables]).each do |name, value|
+      f.puts %(#{name}="#{value}")
     end
   end  
 end
